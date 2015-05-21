@@ -9,36 +9,87 @@ if(typeof Algorithms === "undefined") {
 // Keep repeating until there is only one digit in the result, called the "digital root".
 // Do not use string conversion within your method.
 Algorithms.digitalRoot = function (number) {
+  var result = (number % 10) + (number / 10);
 
+  if(result >= 10) {
+    return digitalRoot(result);
+  } else {
+    return result;
+  }
 };
 
 // Write a function that takes a message and an increment amount and outputs the same letters shifted by that amount in the alphabet.
 // Assume lowercase and no punctuation.
 // Preserve spaces.
 Algorithms.caesarCipher = function (string, shift) {
+  new_str = "";
+  for(var i = 0; i < string.length; i++) {
+    new_str = new_str + (str[i] + shift);
+  }
 
+  return new_str;
 };
 
 // Write a function that takes two strings and returns the longest common substring.
 Algorithms.commonSubstrings = function (stringOne, stringTwo) {
-
+  if(stringOne.length > stringTwo.length) {
+    return stringOne;
+  } else if(stringTwo.length > stringTwo.length) {
+    return stringTwo;
+  } else {
+    return stringOne;
+  }
 };
 
 // Write a function that takes an array of integers and returns their sum.
 // Use recursion.
 Algorithms.sumRec = function (numbers) {
-
+  if(numbers.length == 0){
+    return numbers;
+  }
+  if(numbers.length == 1) {
+    return numbers.pop()
+  } else {
+    last = numbers.pop();
+    result = sumRec(numbers);
+    return last + result;
+  }
 };
 
 // Write a function which returns the first n elements from the fibonnacci sequence, given n.
 Algorithms.fibs = function (number) {
-
+  if(n == 0) {
+    return [];
+  } else if(n == 1) {
+    return [0];
+  } else if(n == 2) {
+    return [0, 1];
+  } else {
+    result = fibs(n - 1);
+    return result.push(result[string.length - 1] + result[string.length - 2]);
+  }
 };
 
 // Write a function that takes a string and returns true if it's a palindrome, false if it's not.
 // Your solution should take less time and memory than rebuilding the string backward and comparing the two.
 Algorithms.isPalindrome = function (string) {
-
+  lowercase_regex = /[a-z]/,
+    i = 0, j = string.length;
+  while (i < j) {
+    if(!string[i].match(lowercase_regex)){
+      i++;
+    } else if(!string[j].match(lowercase_regex)){
+      j++;
+    } else if(!string[i].match(lowercase_regex) &&
+                !string[j].match(lowercase_regex)){
+      i++;
+      j++;
+    } else {
+      if(string[i] != string[j]){
+        return false;
+      }
+    }
+  }
 };
 
 // Implement the Folding Cipher.
